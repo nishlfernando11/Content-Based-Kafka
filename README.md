@@ -18,17 +18,29 @@ Usage Example:-
 Following example demonstrates how to set consumer interests as a NOA expression
 
 Properties props = new Properties();
+
 props.put("bootstrap.servers", "localhost:9092");
+
 props.put("group.id", "test" + ThreadLocalRandom.current().nextInt(1, 10000));
+
 props.put("enable.auto.commit", "true");
+
 props.put("auto.commit.interval.ms", "1000");
+
 props.put("session.timeout.ms", "30000");
+
 props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
 props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
 KafkaContentConsumer<String,String>consumer=new KafkaContentConsumer<String,String>(props);
+
 String expression= "China|Inida|Sri Lanka";
+
 String topic = "test";
+
 consumer.setInterests(expression);
+
 consumer.subscribe(topic);
 
 
